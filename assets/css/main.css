@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  /* fonts */
+  --font-hack: 'Share tech mono', monospace;
+
+  /* "retrowave" colorscheme */
+  --color-rv-fg: #F8F8F8;
+  --color-rv-bg: #262335;
+  --color-rv-bgdark: #241B2F;
+  --color-rv-cyan: #61E2FF;
+  --color-rv-green: #72F1B8;
+  --color-rv-orange: #FF8B39;
+  --color-rv-pink: #FF7EDB;
+  --color-rv-purple: #AF6DF9;
+  --color-rv-red: #FE4450;
+  --color-rv-yellow: #FFCC00;
+  --color-rv-comment: #495495
+}
