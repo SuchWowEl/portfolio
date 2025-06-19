@@ -50,9 +50,11 @@ export default defineComponent({
 });
 </script>
 
-<template>
-  <template v-for="category in Object.values(SkillCategory)" :key="category">
-    <Skill
+<template @mouseleave="resetHoverState">
+  <!-- <template v-for="category in Object.values(SkillCategory)" :key="category"> -->
+  <div class="mt-4 gap-y-4 flex flex-col" @mouseleave="resetHoverState">
+    <Skill 
+      v-for="category in Object.values(SkillCategory)" :key="category"
       :name="category"
       :skills="skills(category)"
       :colorChoice="iconColor(category)"
@@ -60,6 +62,6 @@ export default defineComponent({
       @update:hoveredIdx="val => hoveredIdx = val"
       @call:cntDwn="cntDwn"
     />
-  </template>
+  </div>
 </template>
 

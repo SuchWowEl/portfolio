@@ -31,22 +31,28 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center">
+  <div class="flex flex-wrap gap-x-2 items-center wrap-break-word">
     <span class="text-rv-pink">{{ name }}:</span>
     <span
       v-for="(skill, idx) in skills"
       :key="skill.name"
-      :class="['flex items-center gap-x-2 m-1 duration-200', { 'hover:text-lg hover:transition-all': hoveredIdx === `${name}-${idx}` }]"
-      @mouseover="$emit('update:hoveredIdx', `${name}-${idx}`)"
-      @mouseleave="$emit('call:cntDwn')"
+      class="flex items-center gap-x-2 m-1 duration-200 text-sm sm:text-base"
     >
       <template v-if="skill.icon">
         <component
           :is="skill.icon"
           :color="colorChoice"
-          :size='hoveredIdx === `${name}-${idx}` ? 32 : 24'
+          :size='24'
           className="duration-200 transition-all"
-        /><a :class="['transition-all', { 'text-lg': hoveredIdx === `${name}-${idx}` }]">{{ skill.name }}</a>
+          @mouseover="$emit('update:hoveredIdx', `${name}-${idx}`)"
+          @mouseleave="$emit('call:cntDwn')"
+        />
+        <a 
+          :class="['transition-all',
+            { 'text-[0px]': hoveredIdx != `${name}-${idx}` },
+            { 'text-base': hoveredIdx == `${name}-${idx}` }]"
+          @mouseover="$emit('update:hoveredIdx', null)"
+        >{{ skill.name }}</a>
       </template>
       <template v-else>
         <a
@@ -58,7 +64,6 @@ export default defineComponent({
         </a>
         <a v-else>{{ skill.name }}</a>
       </template>
-      <template v-if="idx < skills.length - 1"> | </template>
     </span>
   </div>
 </template>
