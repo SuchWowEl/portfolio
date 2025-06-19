@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#241B2F] pt-6 min-h-screen font-hack flex flex-col">
+  <div class="bg-rv-bgdark pt-6 min-h-screen font-hack flex flex-col">
     <nav class="text-white py-4 flex flex-row">
       <div class="ml-10">Elizer Dolorosa</div>
       <ul class="mr-10 flex justify-end space-x-4 flex-auto">
@@ -20,7 +20,7 @@
     <main class="min-h-full text-white flex-grow my-10">
       <slot />
     </main>
-    <footer class="bg-gray-800 text-center text-white py-4">
+    <footer class="bg-gray-800 rounded-t-[30px] text-center text-white py-4">
           <p>&copy; 2025 My Portfolio. All rights reserved.</p>
     </footer>
   </div>
