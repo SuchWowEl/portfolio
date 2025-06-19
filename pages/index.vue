@@ -1,9 +1,19 @@
+<script>
+export default defineComponent({
+  methods: {
+    goToProjects() {
+      this.$refs.projectSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+});
+</script>
+
 <template>
   <div class="flex flex-row flex-wrap justify-around items-center w-2/3 lg:w-full mx-auto">
-    <div class="flex flex-col items-center lg:w-1/3">
+    <div class="flex flex-col items-end lg:w-1/3">
       <img src="https://placeholderjs.com/200x200" alt="Placeholder image" class="rounded-full md:h-[300px] h-[200px] md:w-[300px] w-[200px]"/>
     </div>
-    <div class="lg:w-2/3 text-center lg:text-left">
+    <div class="lg:w-2/3 lg:px-32 text-center lg:text-left">
       <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mt-6">Heya 👋 I am Elizer Dolorosa</h1>
       <p class="pr-4 mt-4 text-base md:text-xl">
         A <span class="text-rv-pink">Tinkerer</span> at heart, and a <span class="text-rv-cyan">Software Engineer</span> by trade 🔨
@@ -12,46 +22,39 @@
   </div>
 
   <div class="text-center">
-    <button class="mt-6 px-6 py-2 bg-rv-cyan text-rv-bg font-semibold rounded hover:shadow-md hover:shadow-rv-yellow hover:transition-all">View My Work</button>
+    <button @click="goToProjects" class="mt-6 px-6 py-2 bg-rv-cyan text-rv-bg font-semibold rounded hover:shadow-md hover:shadow-rv-cyan hover:transition-all hover:cursor-pointer">View My Work</button>
   </div>
 
-  <div class="mt-10 px-4 max-w-2/3 mx-auto">
+  <div class="mt-10 px-4 max-w-full sm:max-w-2/3 mx-auto">
 
-    <div class="mt-10">
+    <div class="mt-10 py-10 border-y border-rv-comment">
       <Header title="About Me" />
-      <p class="mt-4 text-base leading-relaxed">
+      <p class="mt-4 lg:text-lg text-base leading-relaxed">
       I am passionate about technology, especially free and open-source software. My curiosity and drive to learn have led me to explore various tools and platforms. As a recent graduate, I am eager to apply my knowledge to design and develop impactful solutions.
       </p>
     </div>
+  </div>
 
+  <div class="md:px-10 flex flex-row">
     <!-- Skills Section -->
-    <div class="mt-10">
+    <div class="mt-10 pr-10 w-1/3">
       <Header title="Skills" />
       <p>Here are some of the things I've used/encountered.</p>
-      <div class="mt-4 gap-y-4 flex flex-col">
-        <SkillSection/>
-      </div>
+      <SkillSection/>
     </div>
 
     <!-- Projects Section -->
-    <div class="mt-10">
-      <Header title="Featured Projects" />
-      <!-- <p class="mt-4 text-base leading-relaxed"> -->
-      <!--   Most of the projects I worked in can be seen in my <a class="text-rv-green hover:border-b hover:border-rv-cyan hover:pb-1 hover:transition-all" href="https://github.com/SuchWowEl" target="_blank" rel="noopener noreferrer">GitHub</a>. -->
-      <!-- </p> -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-        <div class="bg-gray-800 p-4 rounded shadow">
-          <h3 class="text-xl font-semibold">Project Name 1</h3>
-          <p class="mt-2 text-base">A brief description of the project and its impact.</p>
-        </div>
-        <div class="bg-gray-800 p-4 rounded shadow">
-          <h3 class="text-xl font-semibold">Project Name 2</h3>
-          <p class="mt-2 text-base">A brief description of the project and its impact.</p>
-        </div>
+    <div class="mt-10 w-2/3" ref="projectSec">
+      <Header title="Projects" />
+      <p class="mt-4 text-base leading-relaxed">
+        Most of the projects I worked in can be seen in my <a class="text-rv-green hover:border-b hover:border-rv-cyan hover:pb-1 hover:transition-all" href="https://github.com/SuchWowEl" target="_blank">GitHub</a>.
+      </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6  place-content-center">
+        <ProjectSection/>
       </div>
     </div>
-
-    <div class="mt-10 px-4 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-10">
+  </div>
+    <div class="mt-10 px-4 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-10 w-2/3">
       <div class="text-center lg:text-left">
         <Header title="Hobbies & Interests" />
         <ul class="list-disc list-inside text-base md:text-lg">
@@ -70,5 +73,5 @@
 
     </div>
 
-  </div>
+
 </template>
