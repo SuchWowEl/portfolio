@@ -1,17 +1,11 @@
 <template>
-  <section>
-    <h1>My Projects</h1>
-    <p>Details about my projects will go here.</p>
-  </section>
+  <div class="ml-10">
+    <h1 class="text-3xl text-rv-orange font-semibold">My Projects</h1>
+    <section>
+      <p>
+        Details about my projects will go here.
+      </p>
+    </section>
+  </div>
 </template>
-
-<style scoped>
-h1 {
-  color: #333;
-}
-
-section {
-  padding: 2rem;
-}
-</style>
 
