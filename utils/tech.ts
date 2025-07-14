@@ -1,4 +1,4 @@
-import { SiLua, SiPhp, SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHaskell, SiReact, SiVuedotjs, SiLaravel, SiGit, SiDocker, SiNeovim, SiVisualstudiocode, SiAlpinedotjs, SiApache, SiPreact, SiMysql, SiPostgresql, SiFirebase, SiAndroidstudio, SiDbeaver, SiLatex, SiGnubash, SiFlask, SiApachegroovy, SiJupyter, SiIonic, SiPostman, SiFigma, SiNuxtdotjs, SiFlutter, SiTailwindcss, SiGithubcopilot, SiDart, SiKeras, SiJirasoftware } from "vue-icons-plus/si";
+import { SiLua, SiPhp, SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHaskell, SiReact, SiVuedotjs, SiLaravel, SiDocker, SiNeovim, SiVisualstudiocode, SiAlpinedotjs, SiApache, SiPreact, SiMysql, SiPostgresql, SiFirebase, SiAndroidstudio, SiDbeaver, SiLatex, SiGnubash, SiFlask, SiApachegroovy, SiJupyter, SiIonic, SiPostman, SiFigma, SiNuxtdotjs, SiFlutter, SiTailwindcss, SiGithubcopilot, SiDart, SiKeras, SiJirasoftware } from "vue-icons-plus/si";
 import { RiJavaLine } from "vue-icons-plus/ri";
 import type { IconType } from 'vue-icons-plus';
 import { SkillCategory } from "~/enums/SkillCategory";
@@ -54,7 +54,6 @@ export const tools: techSpan = [
   { name: 'Jupyter Notebook', icon: SiJupyter },
   { name: 'GitHub Copilot', icon: SiGithubcopilot },
   { name: 'Jira', icon: SiJirasoftware },
-  { name: 'just', url: 'https://www.github.com/casey/just' },
 ]
 
 export function skills(choice: string): techSpan {
