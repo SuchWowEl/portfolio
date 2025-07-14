@@ -7,8 +7,6 @@ export default defineComponent({
   name: 'SkillSection',
   data() {
     return {
-      hoveredIdx: null as string | null,
-      hoveredSec: 1 as number,
       intervalId: null as number | null,
       SkillCategory
     }
@@ -16,52 +14,32 @@ export default defineComponent({
   methods: {
     skills: skills,
     iconColor: iconColor,
-    cntDwn(): void {
-      if (this.intervalId !== null) return;
-
-      let currIdx = this.hoveredIdx;
-      this.intervalId = window.setInterval(() => {
-        if (currIdx !== this.hoveredIdx) {
-          currIdx = this.hoveredIdx;
-          this.hoveredSec = 1;
-        } else if (this.hoveredSec <= 0) {
-          this.resetHoverState();
-        } else {
-          this.hoveredSec--;
-        }
-        // console.log(`counting down... ${this.hoveredSec}`);
-      }, 1000);
-    },
-    ifHovered(category: string): boolean {
-      if (typeof this.hoveredIdx == "string"){
-        console.log((this.hoveredIdx.split('-')[0] == category) + category);
-        return this.hoveredIdx.split('-')[0] == category;
-      } else return false
-    },
-
-    resetHoverState(): void {
-      console.log("resetHoverState");
-      this.hoveredIdx = null;
-      this.hoveredSec = 1;
-      clearInterval(this.intervalId!);
-      this.intervalId = null;
-    },
   },
 });
 </script>
 
-<template @mouseleave="resetHoverState">
+<template>
   <!-- <template v-for="category in Object.values(SkillCategory)" :key="category"> -->
-  <div class="mt-4 gap-y-4 flex flex-col" @mouseleave="resetHoverState">
-    <Skill 
-      v-for="category in Object.values(SkillCategory)" :key="category"
-      :name="category"
-      :skills="skills(category)"
-      :colorChoice="iconColor(category)"
-      :hoveredIdx="hoveredIdx"
-      @update:hoveredIdx="val => hoveredIdx = val"
-      @call:cntDwn="cntDwn"
-    />
+  <div 
+    class="mt-4 gap-y-4" 
+    v-for="category in Object.values(SkillCategory)" 
+    :key="category"
+  >
+    <div
+      class="flex flex-wrap gap-2 items-center wrap-break-word"
+    >
+      <span class="text-rv-pink">{{ category }}:</span>
+      <span
+        v-for="skill in skills(category)"
+        :key="skill.name"
+        class="flex items-center gap-x-2 m-1 duration-200 text-sm sm:text-base"
+      >
+        <Skill
+          :name="category"
+          :skill="skill"
+          :colorChoice="iconColor(category)"
+        />
+      </span>
+    </div>
   </div>
 </template>
-
