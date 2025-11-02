@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "portfolio",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,6 +15,9 @@
     "@remixicon/vue": "^4.6.0",
     "@tailwindcss/vite": "^4.1.10",
     "@vue/language-server": "^2.2.10",
+    "animejs": "^4.2.2",
+    "better-sqlite3": "^12.4.1",
+    "cloudinary": "^2.8.0",
     "nuxt": "^3.17.5",
     "tailwindcss": "^4.1.10",
     "vue": "^3.5.16",
