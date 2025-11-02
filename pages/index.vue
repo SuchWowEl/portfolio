@@ -14,7 +14,7 @@ export default defineComponent({
   },
   data() {
     return {
-      email: "elizerdolorosa7@gmail.com",
+      email: "elizer.dolorosa7@gmail.com",
       sectionsVisible: false,
       observer: null as IntersectionObserver | null,
     }
@@ -117,57 +117,55 @@ export default defineComponent({
         <ProjectSection/>
       </div>
     </div>
-  </div>
 
-  <div class="mt-10 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-10 w-2/3">
-    <div class="text-center lg:text-left">
-      <Header title="Hobbies & Interests" />
-      <ul class="list-disc list-inside text-base md:text-lg">
-        <li>keeping up with FOSS happenings/events</li>
-        <li ref="hobbiesSection">"i use 
-          <div class="inline-flex gap-x-2">
-            <span 
-              id="arch"
-              class="transition-all duration-200 underline underline-offset-4 text-rv-cyan"
-            >arch</span>
-            <SiArchlinux :style="logoCss" color="#61E2FF" :size='sectionsVisible ? 24 : 0' />
-          </div>
-          btw"
-        </li>
-        <!-- TODO: add link to Neovim repo -->
-        <li>configuring my 
-          <div class="inline-flex gap-x-2">
-            <span 
-              id="neovim"
-              class="text-rv-green underline underline-offset-4"
-            >
-              neovim
-            </span>
-            <SiNeovim :style="logoCss" color="#72F1B8" :size='sectionsVisible ? 24 : 0' 
-            />
-          </div>
-          setup
-        </li>
-        <li>playing games</li>
-        <!-- <li>Playing musical instruments (guitar, piano)</li> -->
-      </ul>
+    <!-- mt-10 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-10 w-2/3 -->
+    <div class="mt-10 mx-auto flex flex-col md:flex-row w-full sm:w-2/3 self-center-safe gap-y-12">
+      <div class="text-center lg:text-left">
+        <Header title="Hobbies & Interests" />
+        <ul class="list-disc list-inside text-base md:text-lg">
+          <li>keeping up with FOSS happenings/events</li>
+          <li ref="hobbiesSection">"i use 
+            <div class="inline-flex gap-x-2">
+              <span 
+                id="arch"
+                class="transition-all duration-200 underline underline-offset-4 text-rv-cyan"
+              >arch</span>
+              <SiArchlinux :style="logoCss" color="#61E2FF" :size='sectionsVisible ? 24 : 0' />
+            </div>
+            btw"
+          </li>
+          <!-- TODO: add link to Neovim repo -->
+          <li>configuring my 
+            <div class="inline-flex gap-x-2">
+              <span 
+                id="neovim"
+                class="text-rv-green underline underline-offset-4"
+              >
+                neovim
+              </span>
+              <SiNeovim :style="logoCss" color="#72F1B8" :size='sectionsVisible ? 24 : 0' 
+              />
+            </div>
+            setup
+          </li>
+          <li>playing games</li>
+          <!-- <li>Playing musical instruments (guitar, piano)</li> -->
+        </ul>
+      </div>
+      <!-- Contact Section -->
+      <div class="text-center lg:text-right grow">
+        <h2 class="text-2xl font-semibold text-rv-pink">Contact Me:</h2>
+        <p class="mt-4">
+          <a
+            :class="[`bg-gray-800 px-1 rounded-sm transition-all text-lg hover:border-b
+            hover:border-rv-cyan hover:rounded-t-sm hover:transition-all hover:text-rv-cyan hover:cursor-pointer`]"
+            :href="`mailto:${email}`"
+          >{{ email }}
+          </a>
+
+        </p>
+        <!-- <button class="mt-6 px-6 py-2 bg-rv-green text-rv-bg font-semibold rounded shadow hover:shadow-md hover:shadow-rv-yellow hover:transition-all">Hire Me</button> -->
+      </div>
     </div>
-    <!-- Contact Section -->
-    <div class="text-center lg:text-right grow">
-      <h2 class="text-2xl font-semibold text-rv-pink">Contact Me:</h2>
-      <p class="mt-4">
-        <a
-          :class="[`bg-gray-800 px-1 rounded-sm transition-all text-lg hover:border-b
-          hover:border-rv-cyan hover:rounded-t-sm hover:transition-all hover:text-rv-cyan hover:cursor-pointer`]"
-          @click="copyEmail"
-        >{{ email }}
-        </a>
-
-      </p>
-      <!-- <button class="mt-6 px-6 py-2 bg-rv-green text-rv-bg font-semibold rounded shadow hover:shadow-md hover:shadow-rv-yellow hover:transition-all">Hire Me</button> -->
-    </div>
-
   </div>
-
-
 </template>
