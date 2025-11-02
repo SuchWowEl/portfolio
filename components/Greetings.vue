@@ -15,19 +15,16 @@ export default defineComponent({
     const paragraph = "A <span class='text-rv-pink'>Tinkerer</span> at heart, and a <span class='text-rv-cyan'>Software Developer</span> by trade 🔨";
 
     const typeText = (text: string, displayRef: { value: string }, interval: number, callback?: () => void) => {
+      const chars = Array.from(text);
       let index = 0;
       const timer = setInterval(() => {
-        if (index < text.length) {
-          const nextChar = text[index];
+        if (index < chars.length) {
+          const nextChar = chars[index];
           displayRef.value += nextChar;
           index++;
           if (nextChar === "<") {
-            while (index < text.length && text[index] !== ">") {
-              displayRef.value += text[index];
-              index++;
-            }
-            if (index < text.length) {
-              displayRef.value += text[index];
+            while (index < chars.length && chars[index] !== ">") {
+              displayRef.value += chars[index];
               index++;
             }
           }
