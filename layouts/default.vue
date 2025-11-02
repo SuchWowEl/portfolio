@@ -52,7 +52,7 @@ import { NuxtLink } from "#components";
     <footer class="text-rv-green/50 text-sm md:text-base py-4 flex flex-row justify-end-safe gap-4 pr-10">
       <template v-for="socials in links">
         <NuxtLink :to="socials.link">
-          <component :is="socials.icon"></component>
+          <component :is="socials.icon" className="text-rv-green/50 hover:text-rv-green transition-all"></component>
         </NuxtLink>
       </template>
     </footer>
