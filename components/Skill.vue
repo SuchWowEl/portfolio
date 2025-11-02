@@ -67,7 +67,7 @@ export default defineComponent({
     >
       <Shiny
         v-if="['Linux', 'Neovim'].includes(skill.name)"
-        :categ="skill.name as 'Linux' | 'Neovim'"
+        :tool="skill.name as 'Linux' | 'Neovim'"
       />
       {{ skill.name }}
     </div>
