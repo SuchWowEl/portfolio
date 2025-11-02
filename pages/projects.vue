@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-10">
+  <div class="mx-10">
     <h1 class="text-3xl text-rv-orange font-semibold">My Projects</h1>
     <section>
       <p>
