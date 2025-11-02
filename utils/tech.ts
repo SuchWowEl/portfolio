@@ -1,4 +1,4 @@
-import { SiLua, SiPhp, SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHaskell, SiReact, SiVuedotjs, SiLaravel, SiDocker, SiNeovim, SiVisualstudiocode, SiAlpinedotjs, SiApache, SiPreact, SiMysql, SiPostgresql, SiFirebase, SiAndroidstudio, SiDbeaver, SiLatex, SiGnubash, SiFlask, SiApachegroovy, SiJupyter, SiIonic, SiPostman, SiFigma, SiNuxtdotjs, SiFlutter, SiTailwindcss, SiGithubcopilot, SiDart, SiKeras, SiJirasoftware } from "vue-icons-plus/si";
+import { SiLua, SiPhp, SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHaskell, SiReact, SiVuedotjs, SiLaravel, SiDocker, SiNeovim, SiVisualstudiocode, SiAlpinedotjs, SiApache, SiPreact, SiMysql, SiPostgresql, SiFirebase, SiAndroidstudio, SiDbeaver, SiLatex, SiGnubash, SiFlask, SiApachegroovy, SiJupyter, SiIonic, SiPostman, SiFigma, SiNuxtdotjs, SiFlutter, SiTailwindcss, SiGithubcopilot, SiDart, SiKeras, SiJirasoftware, SiGodotengine, SiTypst, SiLinux } from "vue-icons-plus/si";
 import { RiJavaLine } from "vue-icons-plus/ri";
 import type { IconType } from 'vue-icons-plus';
 import { SkillCategory } from "~/enums/SkillCategory";
@@ -23,6 +23,7 @@ export const langs: techSpan = [
   { name: 'Dart', icon: SiDart },
   { name: 'Haskell', icon: SiHaskell },
   { name: 'Bash', icon: SiGnubash },
+  { name: 'Typst', icon: SiTypst },
   { name: 'Latex', icon: SiLatex },
   { name: 'Groovy', icon: SiApachegroovy },
 ]
@@ -39,9 +40,11 @@ export const frameworks: techSpan = [
 ]
 export const tools: techSpan = [
   { name: 'Docker', icon: SiDocker },
+  { name: 'Linux', icon: SiLinux },
   { name: 'Neovim', icon: SiNeovim },
   { name: 'VSCode', icon: SiVisualstudiocode },
   { name: 'Android Studio', icon: SiAndroidstudio },
+  { name: 'Godot', icon: SiGodotengine },
   { name: 'DBeaver', icon: SiDbeaver },
   { name: 'MySQL', icon: SiMysql },
   { name: 'PostgreSQL', icon: SiPostgresql },
@@ -50,8 +53,8 @@ export const tools: techSpan = [
   { name: 'Postman', icon: SiPostman },
   { name: 'Figma', icon: SiFigma },
   { name: 'Apache NiFi', icon: SiApache },
-  { name: 'Keras', icon: SiKeras },
   { name: 'Jupyter Notebook', icon: SiJupyter },
+  { name: 'Keras', icon: SiKeras },
   { name: 'GitHub Copilot', icon: SiGithubcopilot },
   { name: 'Jira', icon: SiJirasoftware },
 ]

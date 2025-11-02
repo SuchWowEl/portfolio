@@ -8,22 +8,30 @@ export default defineComponent({
   data() {
     return {
       intervalId: null as number | null,
-      SkillCategory
+      SkillCategory,
+      hoverAll: [] as string[]
     }
   },
   methods: {
     skills: skills,
     iconColor: iconColor,
+    addToHover(category: string): void {
+      if (!this.hoverAll.includes(category)){
+        this.hoverAll.push(category);
+        this.hoverAll = [...this.hoverAll];
+      }
+      console.log(this.hoverAll.toString());
+    }
   },
 });
 </script>
 
 <template>
-  <!-- <template v-for="category in Object.values(SkillCategory)" :key="category"> -->
   <div 
     class="mt-4 gap-y-4" 
     v-for="category in Object.values(SkillCategory)" 
     :key="category"
+    @touchstart="addToHover(category)"
   >
     <div
       class="flex flex-wrap gap-2 items-center wrap-break-word"
@@ -37,6 +45,7 @@ export default defineComponent({
         <Skill
           :name="category"
           :skill="skill"
+          :ifHover="hoverAll"
           :colorChoice="iconColor(category)"
         />
       </span>
