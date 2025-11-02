@@ -12,9 +12,15 @@ export default defineComponent({
   setup(props) {
     const display = ref<string>("");
     const paragraphDisplay = ref<string>("");
-    const paragraph = "A <span class='text-rv-pink'>Tinkerer</span> at heart, and a <span class='text-rv-cyan'>Software Developer</span> by trade 🔨";
+    const paragraph =
+      "A <span class='text-rv-pink'>Tinkerer</span> at heart, and a <span class='text-rv-cyan'>Software Developer</span> by trade 🔨";
 
-    const typeText = (text: string, displayRef: { value: string }, interval: number, callback?: () => void) => {
+    const typeText = (
+      text: string,
+      displayRef: { value: string },
+      interval: number,
+      callback?: () => void
+    ) => {
       const chars = Array.from(text);
       let index = 0;
       const timer = setInterval(() => {

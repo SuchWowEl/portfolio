@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "prepare": "husky install",
     "postinstall": "nuxt prepare",
-    "format": "prettier --write"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@nuxt/content": "^3.6.0",
@@ -35,6 +35,8 @@
     "vue-tsc": "^2.2.10"
   },
   "lint-staged": {
-    "*.{js,ts,vue,css}": ["prettier --write"]
+    "*.{js,ts,vue,css}": [
+      "prettier --write"
+    ]
   }
 }

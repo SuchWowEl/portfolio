@@ -2,18 +2,18 @@
 
 @theme {
   /* fonts */
-  --font-hack: 'Share tech mono', monospace;
+  --font-hack: "Share tech mono", monospace;
 
   /* "retrowave" colorscheme */
-  --color-rv-fg: #F8F8F8;
+  --color-rv-fg: #f8f8f8;
   --color-rv-bg: #262335;
-  --color-rv-bgdark: #241B2F;
-  --color-rv-cyan: #61E2FF;
-  --color-rv-green: #72F1B8;
-  --color-rv-orange: #FF8B39;
-  --color-rv-pink: #FF7EDB;
-  --color-rv-purple: #AF6DF9;
-  --color-rv-red: #FE4450;
-  --color-rv-yellow: #FFCC00;
-  --color-rv-comment: #495495
+  --color-rv-bgdark: #241b2f;
+  --color-rv-cyan: #61e2ff;
+  --color-rv-green: #72f1b8;
+  --color-rv-orange: #ff8b39;
+  --color-rv-pink: #ff7edb;
+  --color-rv-purple: #af6df9;
+  --color-rv-red: #fe4450;
+  --color-rv-yellow: #ffcc00;
+  --color-rv-comment: #495495;
 }

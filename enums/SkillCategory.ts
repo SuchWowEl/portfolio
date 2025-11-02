@@ -3,4 +3,3 @@ export enum SkillCategory {
   Frameworks = "Frameworks",
   Tools = "Tools",
 }
-

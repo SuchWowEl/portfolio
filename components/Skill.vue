@@ -65,7 +65,11 @@ export default defineComponent({
         { 'text-base': hovered },
       ]"
     >
-      <Shiny v-if="['Linux', 'Neovim'].includes(skill.name)" :categ="skill.name as 'Linux'|'Neovim'" /> {{ skill.name }}
+      <Shiny
+        v-if="['Linux', 'Neovim'].includes(skill.name)"
+        :categ="skill.name as 'Linux' | 'Neovim'"
+      />
+      {{ skill.name }}
     </div>
   </template>
   <template v-else>
