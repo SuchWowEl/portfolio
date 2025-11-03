@@ -18,10 +18,6 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    ifHover: {
-      type: Array<String>,
-      required: true,
-    },
   },
   data() {
     return {
@@ -31,12 +27,6 @@ export default defineComponent({
   methods: {
     handleMouseOver() {
       this.hovered = true;
-    },
-    addToHover(category: string): void {
-      if (!this.ifHover.includes(category)) {
-        this.ifHover.push(category);
-      }
-      console.log(this.ifHover.toString());
     },
   },
   watch: {
@@ -57,6 +47,7 @@ export default defineComponent({
       :size="24"
       className="duration-200 transition-all"
       @mouseover="handleMouseOver"
+      @touchstart="handleMouseOver"
     />
     <div
       :class="[
@@ -78,7 +69,7 @@ export default defineComponent({
       :href="skill.url"
       :class="[
         'bg-gray-800 px-1 rounded-sm transition-all',
-        { 'text-lg text-rv-cyan': hovered || ifHover.includes(name) },
+        { 'text-lg text-rv-cyan': hovered },
       ]"
     >
       {{ skill.name }}

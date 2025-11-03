@@ -31,7 +31,6 @@ export default defineComponent({
     class="mt-4 gap-y-4"
     v-for="category in Object.values(SkillCategory)"
     :key="category"
-    @touchstart="addToHover(category)"
   >
     <div class="flex flex-wrap gap-2 items-center wrap-break-word">
       <span class="text-rv-pink">{{ category }}:</span>
@@ -43,7 +42,6 @@ export default defineComponent({
         <Skill
           :name="category"
           :skill="skill"
-          :ifHover="hoverAll"
           :colorChoice="iconColor(category)"
         />
       </span>
