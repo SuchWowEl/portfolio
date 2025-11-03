@@ -135,9 +135,10 @@ export default defineComponent({
           class="list-disc list-inside text-base md:text-lg"
           ref="hobbiesSection"
         >
+          <!-- prettier-ignore -->
           <li>keeping up with FOSS happenings/events</li>
-          <li>
-            "i use
+          <!-- prettier-ignore -->
+          <li>"i use
             <div class="inline-flex gap-x-2">
               <span
                 id="arch"
@@ -153,8 +154,8 @@ export default defineComponent({
             btw"
           </li>
           <!-- TODO: add link to Neovim repo -->
-          <li>
-            configuring my
+          <!-- prettier-ignore -->
+          <li>configuring my
             <div class="inline-flex gap-x-2">
               <span
                 id="neovim"
