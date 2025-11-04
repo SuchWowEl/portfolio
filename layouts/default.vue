@@ -39,22 +39,6 @@ export default defineComponent({
         <span class="">~{{ location() }} $ </span>
         <span class="font-bold text-lg">ED</span>
       </NuxtLink>
-      <ul class="mr-10 flex justify-end space-x-4 flex-auto">
-        <li>
-          <NuxtLink
-            to="/about"
-            class="relative hover:border-b hover:border-rv-yellow hover:pb-1 hover:transition-all"
-            >About</NuxtLink
-          >
-        </li>
-        <li>
-          <NuxtLink
-            to="/projects"
-            class="relative hover:border-b hover:border-rv-yellow hover:pb-1 hover:transition-all"
-            >Projects</NuxtLink
-          >
-        </li>
-      </ul>
     </nav>
     <main class="min-h-full text-white flex-grow my-10">
       <slot />
