@@ -14,7 +14,7 @@ const opts: Record<categEnum, { emoji: string; params: WAAPIAnimationParams }> =
           to: [0, 15, 0, -30, 0],
           ease: "linear",
         },
-        duration: 900,
+        duration: 500,
       },
     },
     Neovim: {

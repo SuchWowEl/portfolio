@@ -19,21 +19,6 @@ export default defineComponent({
       observer: null as IntersectionObserver | null,
     };
   },
-  computed: {
-    logoCss() {
-      return {
-        transitionProperty: "all",
-        transitionTimingFunction:
-          "var(--tw-ease, var(--default-transition-timing-function))" /* cubic-bezier(0.4, 0, 0.2, 1) */,
-        "--tw-duration": "200ms",
-        transitionDuration: "200ms",
-        // ':hover': {
-        //   cursor: 'pointer'
-        // },
-        // '&:hover': `@media (hover: hover) { cursor: pointer; }`,
-      };
-    },
-  },
   mounted() {
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -57,6 +42,11 @@ export default defineComponent({
         behavior: "smooth",
       });
     },
+    async copyEmail() {
+      const message = "Redirecting to your email client";
+      console.log(message);
+      useNuxtApp().$toast.info(message, { autoClose: 1500 });
+    },
   },
 });
 </script>
@@ -67,8 +57,8 @@ export default defineComponent({
   >
     <div class="flex flex-col items-end lg:w-1/3">
       <img
-        src="https://placeholderjs.com/200x200"
-        alt="Placeholder image"
+        src="https://res.cloudinary.com/djqoxxzdo/image/upload/v1762536434/candidate_2_xq16to.jpg"
+        alt="Profile Image"
         class="rounded-full md:h-[300px] h-[200px] md:w-[300px] w-[200px]"
       />
     </div>
@@ -105,7 +95,7 @@ export default defineComponent({
     <!-- Skills Section -->
     <div class="mt-10 self-center-safe sm:w-2/3 w-full h-fit lg:pb-0 pb-10">
       <Header title="Skills" />
-      <p>Here are some of the things I've used/encountered.</p>
+      <p>Here are some of the things I've used.</p>
       <SkillSection />
     </div>
 
@@ -127,7 +117,7 @@ export default defineComponent({
 
     <!-- mt-10 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-y-10 lg:gap-x-10 w-2/3 -->
     <div
-      class="mt-10 mx-auto flex flex-col md:flex-row w-full sm:w-2/3 self-center-safe gap-y-12"
+      class="mt-10 mx-auto flex flex-col lg:flex-row w-full sm:w-2/3 self-center-safe gap-y-12"
     >
       <div class="text-center lg:text-left">
         <Header title="Hobbies & Interests" />
@@ -139,39 +129,34 @@ export default defineComponent({
           <li>keeping up with FOSS happenings/events</li>
           <!-- prettier-ignore -->
           <li>"i use
-            <div class="inline-flex gap-x-2">
+            <a class="inline-flex gap-x-2 text-rv-cyan underline underline-offset-4 hover:cursor-pointer hover:text-shadow-lg/30 hover:text-shadow-rv-cyan [*]:hover:drop-shadow-rv-cyan [*]:hover:drop-shadow-lg" href="https://github.com/SuchWowEl/dotfiles">
               <span
                 id="arch"
-                class="transition-all duration-200 underline underline-offset-4 text-rv-cyan"
                 >arch</span
               >
               <SiArchlinux
-                :style="logoCss"
                 color="#61E2FF"
                 :size="sectionsVisible ? 24 : 0"
               />
-            </div>
+            </a>
             btw"
           </li>
-          <!-- TODO: add link to Neovim repo -->
           <!-- prettier-ignore -->
           <li>configuring my
-            <div class="inline-flex gap-x-2">
+            <a class="inline-flex gap-x-2 text-rv-green underline underline-offset-4 hover:cursor-pointer hover:text-shadow-lg/30 hover:text-shadow-rv-green [*]:hover:drop-shadow-rv-green [*]:hover:drop-shadow-lg" href="https://github.com/SuchWowEl/nvim_conf">
               <span
                 id="neovim"
-                class="text-rv-green underline underline-offset-4"
               >
                 neovim
               </span>
               <SiNeovim
-                :style="logoCss"
                 color="#72F1B8"
                 :size="sectionsVisible ? 24 : 0"
               />
-            </div>
+            </a>
             setup
           </li>
-          <li>playing games</li>
+          <li>playing games, reading manga, watching animes or movies</li>
           <!-- <li>Playing musical instruments (guitar, piano)</li> -->
         </ul>
       </div>
@@ -185,6 +170,7 @@ export default defineComponent({
             hover:border-rv-cyan hover:rounded-t-sm hover:transition-all hover:text-rv-cyan hover:cursor-pointer`,
             ]"
             :href="`mailto:${email}`"
+            @click="copyEmail"
             >{{ email }}
           </a>
         </p>

@@ -6,7 +6,10 @@ import { SkillCategory } from "~/enums/SkillCategory";
 type projectType = {
   name: string;
   link?: string;
-  image?: string;
+  image: {
+    link: string;
+    alt: string;
+  };
   desc: string;
   langs: techSpan;
   fwrks?: techSpan;
@@ -26,16 +29,20 @@ const projects: projectType[] = [
     how to read through playing interactive Filipino stories,
     with which we won the 2024 STTP Region 10— a startup competition
     hosted by DOST for College students in the region.`,
-    image: tempImageLink,
     langs: techFilterer(langs, ["TypeScript"]),
     fwrks: techFilterer(frameworks, ["React", "Ionic"]),
     tools: techFilterer(tools, ["Figma", "Tailwind"]),
+    image: {
+      link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239424/andana_um7mdb.png",
+      alt: "Andana preview",
+    },
   },
   {
     name: `Academic Data Mart w/ API for MSU-IIT's Student
     Information System `,
     desc: `For our thesis, I led the team in designing the
-    Data Mart Schema and developing the ETL.`,
+    Data Mart Schema and developing the ETL using Kimball's
+    method.`,
     langs: techFilterer(langs, ["Groovy"]),
     tools: techFilterer(tools, [
       "PostgreSQL",
@@ -44,14 +51,17 @@ const projects: projectType[] = [
       "Docker",
       "GitHub Copilot",
     ]),
-    image: tempImageLink,
+    image: {
+      link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239424/full_system_architecture_cnedew.png",
+      alt: "Data Mart Architecture",
+    },
   },
   {
     name: "PAO Web App",
     desc: `As a requirement in one of my college subjects, I
     led the team to make the initial web application— which
     digitizes a client scheduling an appointment with an
-    attorney. Focused more on the Database (MySQL)`,
+    attorney. Focused more on the Database and the Backend.`,
     langs: techFilterer(langs, ["Python"]),
     fwrks: techFilterer(frameworks, ["Flask"]),
     tools: techFilterer(tools, [
@@ -61,7 +71,10 @@ const projects: projectType[] = [
       "Figma",
       "DBeaver",
     ]),
-    image: tempImageLink,
+    image: {
+      link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239424/Login_gktkgs.png",
+      alt: "PAO landing page",
+    },
   },
   {
     name: "Planning Digitization (LGU GenSan)",
@@ -70,7 +83,10 @@ const projects: projectType[] = [
     langs: techFilterer(langs, ["PHP", "Javascript"]),
     fwrks: techFilterer(frameworks, ["Laravel", "Alpine"]),
     tools: techFilterer(tools, ["MySQL", "Tailwind", "DBeaver", "Docker"]),
-    image: tempImageLink,
+    image: {
+      link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239423/aip-ppa_pvxv9y.png",
+      alt: "Planning Digitization landing page",
+    },
   },
 ];
 
@@ -86,11 +102,11 @@ export default defineComponent({
       const midIndex = Math.ceil(projects.length / 2);
       return [projects.slice(0, midIndex), projects.slice(midIndex)];
     },
-    skillEnums() {
-      return (title: string) => {
-        if (title === "langs") return iconColor(SkillCategory.Languages);
-        if (title === "fwrks") return iconColor(SkillCategory.Frameworks);
-        else return iconColor(SkillCategory.Tools);
+    enum_of() {
+      return (title: string): SkillCategory => {
+        if (title === "langs") return SkillCategory.Languages;
+        if (title === "fwrks") return SkillCategory.Frameworks;
+        else return SkillCategory.Tools;
       };
     },
   },
@@ -122,7 +138,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex md:flex-row flex-col gap-6">
+  <div class="flex lg:flex-row flex-col gap-6">
     <div
       v-for="(column, colIdx) in groupedProjects"
       :key="colIdx"
@@ -134,11 +150,7 @@ export default defineComponent({
         class="bg-gray-800 p-4 rounded-lg w-full shadow flex flex-col gap-y-4 h-fit basis-1/2"
       >
         <h3 class="text-xl text-rv-yellow font-semibold">{{ proj.name }}</h3>
-        <img
-          src="https://placeholderjs.com/200x200"
-          alt="Placeholder image"
-          class="h-[200px] w-[200px] mx-auto"
-        />
+        <img :src="proj.image.link" :alt="proj.image.alt" />
         <p class="text-base">{{ proj.desc }}</p>
         <div
           class="self-end text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-center"
@@ -149,7 +161,7 @@ export default defineComponent({
                 category as keyof projectType
               ] as techSpan"
               :class="[
-                'flex flex-row items-center lg:gap-x-2',
+                'flex flex-row items-center lg:gap-x-2 gap-x-0',
                 !ifHovered(colIdx, projIdx, category, techIdx)
                   ? 'gap-x-0'
                   : 'gap-x-2',
@@ -157,20 +169,11 @@ export default defineComponent({
               @mouseenter="addToHover(colIdx, projIdx, category, techIdx)"
               @touchstart="addToHover(colIdx, projIdx, category, techIdx)"
             >
-              <component
-                :is="tech.icon"
-                :color="`${skillEnums(category as string)}`"
-                :size="24"
-              ></component>
-              <a
-                :class="[
-                  'transition-all',
-                  !ifHovered(colIdx, projIdx, category, techIdx)
-                    ? 'text-[0px]'
-                    : 'text-base',
-                ]"
-                >{{ tech.name }}</a
-              >
+              <Skill
+                :name="enum_of(category)"
+                :skill="tech"
+                :colorChoice="iconColor(enum_of(category))"
+              />
             </span>
           </template>
         </div>

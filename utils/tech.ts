@@ -64,8 +64,6 @@ export const langs: techSpan = [
   { name: "Dart", icon: SiDart },
   { name: "Haskell", icon: SiHaskell },
   { name: "Bash", icon: SiGnubash },
-  { name: "Typst", icon: SiTypst },
-  { name: "Latex", icon: SiLatex },
   { name: "Groovy", icon: SiApachegroovy },
 ];
 export const frameworks: techSpan = [
