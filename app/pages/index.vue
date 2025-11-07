@@ -1,54 +1,42 @@
-<script lang="ts">
+<script setup lang="ts">
 import { SiArchlinux, SiNeovim } from "vue-icons-plus/si";
 
-// NOTE: resort to using `style` as the icon has this weird
-// quirk that when the component is initially rendered,
-// it uses the `class` attribute, but when switched to another
-// and back again, it becomes `className` which breaks the
-// transitions.
+const email = ref("elizer.dolorosa7@gmail.com");
+const sectionsVisible = ref<boolean>(false);
+const observer = ref<IntersectionObserver | null>(null);
+const hobbiesSection = useTemplateRef<HTMLUListElement>("hobbiesSection");
+const projectSec = useTemplateRef<HTMLDivElement>("projectSec");
 
-export default defineComponent({
-  components: {
-    SiArchlinux,
-    SiNeovim,
-  },
-  data() {
-    return {
-      email: "elizer.dolorosa7@gmail.com",
-      sectionsVisible: false,
-      observer: null as IntersectionObserver | null,
-    };
-  },
-  mounted() {
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          this.sectionsVisible = true;
-        }
-      });
+onMounted(() => {
+  observer.value = new IntersectionObserver((entries) => {
+    entries.forEach(async (entry) => {
+      if (entry.isIntersecting) {
+        await new Promise((resolve) => setTimeout(resolve, 500));
+        sectionsVisible.value = true;
+      }
     });
+  });
 
-    const hobbiesSection = this.$refs.hobbiesSection as HTMLElement;
-
-    if (hobbiesSection && this.observer) this.observer.observe(hobbiesSection);
-  },
-  beforeUnmount() {
-    if (this.observer !== null) this.observer.disconnect();
-  },
-
-  methods: {
-    goToProjects() {
-      (this.$refs.projectSec as HTMLElement).scrollIntoView({
-        behavior: "smooth",
-      });
-    },
-    async copyEmail() {
-      const message = "Redirecting to your email client";
-      console.log(message);
-      useNuxtApp().$toast.info(message, { autoClose: 1500 });
-    },
-  },
+  if (hobbiesSection.value && observer.value) observer.value.observe(hobbiesSection.value);
 });
+
+onBeforeUnmount(() => {
+  if (observer.value !== null) observer.value.disconnect();
+});
+
+const goToProjects = () => {
+  if (projectSec.value) {
+    projectSec.value.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+};
+
+const copyEmail = async () => {
+  const message = "Redirecting to your email client";
+  console.log(message);
+  useNuxtApp().$toast.info(message, { autoClose: 1500 });
+};
 </script>
 
 <template>
@@ -130,31 +118,25 @@ export default defineComponent({
             <li>keeping up with FOSS happenings/events</li>
             <!-- prettier-ignore -->
             <li>"i use
-              <a class="inline-flex gap-x-2 text-rv-cyan underline underline-offset-4 hover:cursor-pointer hover:text-shadow-lg/30 hover:text-shadow-rv-cyan [*]:hover:drop-shadow-rv-cyan [*]:hover:drop-shadow-lg" href="https://github.com/SuchWowEl/dotfiles">
-                <span
-                  id="arch"
-                >arch</span
-                >
-                <SiArchlinux
-                  color="#61E2FF"
-                  :size="sectionsVisible ? 24 : 0"
-                />
-              </a>
+              <HobbyIconLink
+                href="https://github.com/SuchWowEl/dotfiles"
+                label="arch"
+                :icon="SiArchlinux"
+                :size="sectionsVisible ? 24 : 0"
+                classes="text-rv-cyan hover:text-shadow-rv-cyan [*]:hover:drop-shadow-rv-cyan"
+                aria-label="Arch Linux dotfiles GitHub link"
+              />
               btw"
             </li>
-            <!-- prettier-ignore -->
             <li>configuring my
-              <a class="inline-flex gap-x-2 text-rv-green underline underline-offset-4 hover:cursor-pointer hover:text-shadow-lg/30 hover:text-shadow-rv-green [*]:hover:drop-shadow-rv-green [*]:hover:drop-shadow-lg" href="https://github.com/SuchWowEl/nvim_conf">
-                <span
-                  id="neovim"
-                >
-                  neovim
-                </span>
-                <SiNeovim
-                  color="#72F1B8"
-                  :size="sectionsVisible ? 24 : 0"
-                />
-              </a>
+              <HobbyIconLink
+                href="https://github.com/SuchWowEl/nvim_conf"
+                label="neovim"
+                :icon="SiNeovim"
+                :size="sectionsVisible ? 24 : 0"
+                classes="text-rv-green hover:text-shadow-rv-green [*]:hover:drop-shadow-rv-green"
+                aria-label="Neovim config GitHub link"
+              />
               setup
             </li>
             <li>playing games, reading manga, watching animes or movies</li>
