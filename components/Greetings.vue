@@ -56,5 +56,6 @@ export default defineComponent({
 
 <template>
   <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mt-6">{{ display }}</h1>
-  <p class="pr-4 mt-4 text-base md:text-xl" v-html="paragraphDisplay"></p>
+  <!-- eslint-disable-next-line vue/no-v-html -->
+  <p class="pr-4 mt-4 text-base md:text-xl" v-html="paragraphDisplay"/>
 </template>

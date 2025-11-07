@@ -9,7 +9,9 @@
     "preview": "nuxt preview",
     "prepare": "husky install",
     "postinstall": "nuxt prepare",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "dependencies": {
     "@nuxt/content": "^3.6.0",
@@ -43,7 +45,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue,css}": [
-      "prettier --write"
+      "eslint "
     ]
   }
 }

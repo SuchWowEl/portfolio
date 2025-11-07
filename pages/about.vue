@@ -7,7 +7,7 @@ const showArchBtw = ref<boolean>(false);
 // it uses the `class` attribute, but when switched to another
 // and back again, it becomes `className` which breaks the
 // transitions.
-const logoCss = computed<void>(() => {
+const logoCss = computed(() => {
   return {
     "transition-property": "all",
     "transition-timing-function":
@@ -42,7 +42,7 @@ const logoCss = computed<void>(() => {
                   { 'text-rv-cyan': showArchBtw },
                   { 'underline underline-offset-4': !showArchBtw },
                 ]"
-                >arch{{ showArchBtw ? "linux" : "" }}</span
+              >arch{{ showArchBtw ? "linux" : "" }}</span
               >
               <SiArchlinux
                 :style="logoCss"

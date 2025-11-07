@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import { SkillCategory } from "../enums/SkillCategory";
+import type { SkillCategory } from "../enums/SkillCategory";
 import type { PropType } from "vue";
 import type { IconType } from "vue-icons-plus/lib";
 
@@ -24,9 +24,12 @@ export default defineComponent({
       hovered: false,
     };
   },
-  methods: {
-    handleMouseOver() {
-      this.hovered = true;
+  computed: {
+    ifShiny(): "Linux" | "Neovim" | undefined {
+      if (["Linux", "Neovim"].includes(this.skill.name)) {
+        return this.skill.name as "Linux" | "Neovim";
+      }
+      return undefined;
     },
   },
   watch: {
@@ -34,6 +37,11 @@ export default defineComponent({
       if (newVal.includes(this.name)) {
         this.hovered = true;
       }
+    },
+  },
+  methods: {
+    handleMouseOver() {
+      this.hovered = true;
     },
   },
 });
@@ -45,7 +53,7 @@ export default defineComponent({
       :is="skill.icon"
       :color="colorChoice"
       :size="24"
-      className="duration-200 transition-all"
+      class-name="duration-200 transition-all"
       @mouseover="handleMouseOver"
       @touchstart="handleMouseOver"
     />
@@ -57,8 +65,8 @@ export default defineComponent({
       ]"
     >
       <Shiny
-        v-if="['Linux', 'Neovim'].includes(skill.name)"
-        :tool="skill.name as 'Linux' | 'Neovim'"
+        v-if="ifShiny"
+        :tool="ifShiny"
       />
       {{ skill.name }}
     </div>

@@ -155,7 +155,7 @@ export default defineComponent({
         class="bg-gray-800 p-4 rounded-lg w-full shadow flex flex-col gap-y-4 h-fit basis-1/2"
       >
         <h3 class="text-xl text-rv-yellow font-semibold">{{ proj.name }}</h3>
-        <img :src="proj.image.link" :alt="proj.image.alt" />
+        <img :src="proj.image.link" :alt="proj.image.alt" >
         <p class="text-base">{{ proj.desc }}</p>
         <div
           class="self-end text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-center"

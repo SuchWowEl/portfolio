@@ -1,19 +1,11 @@
 <script lang="ts">
 import { SiGithub, SiLinkedin } from "vue-icons-plus/si";
 import type { IconType } from "vue-icons-plus";
-import { NuxtLink } from "#components";
 
 export default defineComponent({
   components: {
     SiGithub,
     SiLinkedin,
-  },
-  methods: {
-    location(): string {
-      if (this.$route.path == "/") {
-        return "";
-      } else return this.$route.path;
-    },
   },
   computed: {
     links(): { icon: IconType; link: string }[] {
@@ -24,6 +16,13 @@ export default defineComponent({
           link: "https://www.linkedin.com/in/elizer-dolorosa7/",
         },
       ];
+    },
+  },
+  methods: {
+    location(): string {
+      if (this.$route.path == "/") {
+        return "";
+      } else return this.$route.path;
     },
   },
 });
@@ -46,12 +45,12 @@ export default defineComponent({
     <footer
       class="text-rv-green/50 text-sm md:text-base py-4 flex flex-row justify-end-safe gap-4 pr-10"
     >
-      <template v-for="socials in links">
+      <template v-for="(socials, idx) in links" :key="idx">
         <NuxtLink :to="socials.link">
           <component
             :is="socials.icon"
-            className="text-rv-green/50 hover:text-rv-green transition-all"
-          ></component>
+            class-name="text-rv-green/50 hover:text-rv-green transition-all"
+          />
         </NuxtLink>
       </template>
     </footer>

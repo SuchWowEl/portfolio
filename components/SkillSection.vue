@@ -28,9 +28,9 @@ export default defineComponent({
 
 <template>
   <div
-    class="mt-4 gap-y-4"
     v-for="category in Object.values(SkillCategory)"
     :key="category"
+    class="mt-4 gap-y-4"
   >
     <div class="flex flex-wrap gap-2 items-center wrap-break-word">
       <span class="text-rv-pink">{{ category }}:</span>
@@ -42,7 +42,7 @@ export default defineComponent({
         <Skill
           :name="category"
           :skill="skill"
-          :colorChoice="iconColor(category)"
+          :color-choice="iconColor(category)"
         />
       </span>
     </div>

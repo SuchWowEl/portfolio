@@ -21,7 +21,6 @@ import {
   SiFirebase,
   SiAndroidstudio,
   SiDbeaver,
-  SiLatex,
   SiGnubash,
   SiFlask,
   SiApachegroovy,
@@ -37,7 +36,6 @@ import {
   SiKeras,
   SiJirasoftware,
   SiGodotengine,
-  SiTypst,
   SiLinux,
 } from "vue-icons-plus/si";
 import { RiJavaLine } from "vue-icons-plus/ri";
