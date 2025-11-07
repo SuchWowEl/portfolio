@@ -3,7 +3,7 @@ import { langs, frameworks, tools, iconColor } from "~/utils/tech";
 import type { techSpan } from "~/utils/tech";
 import { SkillCategory } from "~/enums/SkillCategory";
 
-type projectType = {
+interface projectType {
   name: string;
   link?: string;
   image: {
@@ -14,13 +14,13 @@ type projectType = {
   langs: techSpan;
   fwrks?: techSpan;
   tools?: techSpan;
-};
+}
 
 const techFilterer = (tech: techSpan, list: string[]) => {
   return tech.filter((tch) => list.includes(tch.name));
 };
 
-const tempImageLink = "https://placeholderjs.com/200x200";
+// const tempImageLink = "https://placeholderjs.com/200x200";
 
 const projects: projectType[] = [
   {
@@ -94,6 +94,11 @@ export default defineComponent({
   data() {
     return {
       hoveredIdx: [] as string[],
+      iconColor,
+      // eslint-disable-next-line @typescript-eslint/array-type
+      projecttype_skill_keys: ["langs", "fwrks", "tools"] as Array<
+        keyof Pick<projectType, "langs" | "fwrks" | "tools">
+      >,
     };
   },
   computed: {
@@ -155,11 +160,10 @@ export default defineComponent({
         <div
           class="self-end text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-center"
         >
-          <template v-for="category in ['langs', 'fwrks', 'tools']">
+          <template v-for="category in projecttype_skill_keys">
             <span
-              v-for="(tech, techIdx) in proj[
-                category as keyof projectType
-              ] as techSpan"
+              v-for="(tech, techIdx) in proj[category]"
+              :key="tech.name + techIdx"
               :class="[
                 'flex flex-row items-center lg:gap-x-2 gap-x-0',
                 !ifHovered(colIdx, projIdx, category, techIdx)
@@ -172,7 +176,7 @@ export default defineComponent({
               <Skill
                 :name="enum_of(category)"
                 :skill="tech"
-                :colorChoice="iconColor(enum_of(category))"
+                :color-choice="iconColor(enum_of(category))"
               />
             </span>
           </template>
