@@ -32,24 +32,24 @@ export default defineComponent({
   <div class="bg-rv-bgdark pt-6 min-h-screen font-hack flex flex-col">
     <nav class="text-white py-4 flex flex-row items-center-safe">
       <NuxtLink
-        class="ml-10 border-b-1 border-rv-bgdark text-rv-green p-2 transition-all hover:cursor-pointer hover:border-rv-green"
+        class="ml-10 border-b border-rv-bgdark text-rv-green p-2 transition-all touch-auto:cursor-pointer touch-auto:border-rv-green hover:cursor-pointer hover:border-rv-green"
         to="/"
       >
         <span class="">~{{ location() }} $ </span>
         <span class="font-bold text-lg">ED</span>
       </NuxtLink>
     </nav>
-    <main class="min-h-full text-white flex-grow my-10">
+    <main class="min-h-full text-white grow my-10">
       <slot />
     </main>
     <footer
-      class="text-rv-green/50 text-sm md:text-base py-4 flex flex-row justify-end-safe gap-4 pr-10"
+      class="text-rv-orange/50 text-sm md:text-base py-4 flex flex-row justify-end-safe gap-4 pr-10"
     >
       <template v-for="(socials, idx) in links" :key="idx">
         <NuxtLink :to="socials.link">
           <component
             :is="socials.icon"
-            class-name="text-rv-green/50 hover:text-rv-green transition-all"
+            class-name="text-rv-orange/50 hover:text-rv-orange transition-all"
           />
         </NuxtLink>
       </template>
