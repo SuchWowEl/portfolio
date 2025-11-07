@@ -22,7 +22,7 @@
     "animejs": "^4.2.2",
     "better-sqlite3": "^12.4.1",
     "cloudinary": "^2.8.0",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.2.1",
     "tailwindcss": "^4.1.10",
     "vue": "^3.5.16",
     "vue-icons-plus": "^0.1.8",
