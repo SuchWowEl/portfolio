@@ -1,6 +1,5 @@
 <script lang="ts">
 import { langs, frameworks, tools, iconColor } from "~/utils/tech";
-import type { techSpan } from "~/utils/tech";
 import { SkillCategory } from "~/enums/SkillCategory";
 
 interface projectType {
@@ -11,12 +10,12 @@ interface projectType {
     alt: string;
   };
   desc: string;
-  langs: techSpan;
-  fwrks?: techSpan;
-  tools?: techSpan;
+  langs: techSpanArr;
+  fwrks?: techSpanArr;
+  tools?: techSpanArr;
 }
 
-const techFilterer = (tech: techSpan, list: string[]) => {
+const techFilterer = (tech: techSpanArr, list: string[]) => {
   return tech.filter((tch) => list.includes(tch.name));
 };
 
@@ -158,7 +157,7 @@ export default defineComponent({
         <img :src="proj.image.link" :alt="proj.image.alt" >
         <p class="text-base">{{ proj.desc }}</p>
         <div
-          class="self-end text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-center"
+          class="self-end justify-end-safe text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-end"
         >
           <template v-for="category in projecttype_skill_keys">
             <span

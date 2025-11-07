@@ -1,8 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import type { SkillCategory } from "../enums/SkillCategory";
-import type { PropType } from "vue";
-import type { IconType } from "vue-icons-plus/lib";
 
 export default defineComponent({
   props: {
@@ -11,7 +9,7 @@ export default defineComponent({
       required: true,
     },
     skill: {
-      type: Object as PropType<{ name: string; icon?: IconType; url?: string }>,
+      type: Object as PropType<techSpan>,
       required: true,
     },
     colorChoice: {

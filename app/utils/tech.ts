@@ -48,23 +48,24 @@ export const colors = {
   iconOrange: "#FF8B39",
 };
 
-export type techSpan = { name: string; icon?: IconType; url?: string }[];
+export interface techSpan { name: string; icon?: IconType; url?: string };
+export type techSpanArr = techSpan[];
 
-export const langs: techSpan = [
+export const langs: techSpanArr = [
   { name: "Python", icon: SiPython },
   { name: "Javascript", icon: SiJavascript },
   { name: "TypeScript", icon: SiTypescript },
   { name: "C", icon: SiC },
   { name: "C++", icon: SiCplusplus },
+  { name: "Lua", icon: SiLua },
   { name: "Java", icon: RiJavaLine },
   { name: "PHP", icon: SiPhp },
-  { name: "Lua", icon: SiLua },
   { name: "Dart", icon: SiDart },
   { name: "Haskell", icon: SiHaskell },
   { name: "Bash", icon: SiGnubash },
   { name: "Groovy", icon: SiApachegroovy },
 ];
-export const frameworks: techSpan = [
+export const frameworks: techSpanArr = [
   { name: "React", icon: SiReact },
   { name: "Ionic", icon: SiIonic },
   { name: "Vue.js", icon: SiVuedotjs },
@@ -75,7 +76,7 @@ export const frameworks: techSpan = [
   { name: "Flutter", icon: SiFlutter },
   { name: "Preact", icon: SiPreact },
 ];
-export const tools: techSpan = [
+export const tools: techSpanArr = [
   { name: "Docker", icon: SiDocker },
   { name: "Linux", icon: SiLinux },
   { name: "Neovim", icon: SiNeovim },
@@ -96,7 +97,7 @@ export const tools: techSpan = [
   { name: "Jira", icon: SiJirasoftware },
 ];
 
-export function skills(choice: string): techSpan {
+export function skills(choice: string): techSpanArr {
   if (choice === "Languages") return langs;
   else if (choice === "Frameworks") return frameworks;
   else return tools;
