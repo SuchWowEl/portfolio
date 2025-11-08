@@ -37,6 +37,9 @@ import {
   SiJirasoftware,
   SiGodotengine,
   SiLinux,
+  SiNodedotjs,
+  SiMongodb,
+  SiExpress,
 } from "vue-icons-plus/si";
 import { RiJavaLine } from "vue-icons-plus/ri";
 import type { IconType } from "vue-icons-plus";
@@ -72,6 +75,7 @@ export const frameworks: techSpanArr = [
   { name: "Alpine", icon: SiAlpinedotjs },
   { name: "Nuxt.js", icon: SiNuxtdotjs },
   { name: "Laravel", icon: SiLaravel },
+  { name: "Express.js", icon: SiExpress },
   { name: "Flask", icon: SiFlask },
   { name: "Flutter", icon: SiFlutter },
   { name: "Preact", icon: SiPreact },
@@ -82,10 +86,12 @@ export const tools: techSpanArr = [
   { name: "Neovim", icon: SiNeovim },
   { name: "VSCode", icon: SiVisualstudiocode },
   { name: "Android Studio", icon: SiAndroidstudio },
+  { name: "Node.js", icon: SiNodedotjs },
   { name: "Godot", icon: SiGodotengine },
   { name: "DBeaver", icon: SiDbeaver },
   { name: "MySQL", icon: SiMysql },
   { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MongoDB", icon: SiMongodb },
   { name: "Tailwind", icon: SiTailwindcss },
   { name: "Firebase", icon: SiFirebase },
   { name: "Postman", icon: SiPostman },
