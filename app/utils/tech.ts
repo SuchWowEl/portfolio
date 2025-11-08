@@ -103,7 +103,7 @@ export function skills(choice: string): techSpanArr {
   else return tools;
 }
 
-export function iconColor(choice: string): string {
+export function iconColor(choice: string | SkillCategory): string {
   if (choice === SkillCategory.Languages) {
     return colors.iconCyan;
   } else if (choice === SkillCategory.Frameworks) {

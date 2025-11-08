@@ -2,7 +2,7 @@
 import { langs, frameworks, tools, iconColor } from "~/utils/tech";
 import { SkillCategory } from "~/enums/SkillCategory";
 
-interface projectType {
+type projectType = {
   name: string;
   link?: string;
   image: {
@@ -10,16 +10,11 @@ interface projectType {
     alt: string;
   };
   desc: string;
-  langs: techSpanArr;
-  fwrks?: techSpanArr;
-  tools?: techSpanArr;
-}
+} & Partial<Record<SkillCategory, techSpanArr>>;
 
 const techFilterer = (tech: techSpanArr, list: string[]) => {
   return tech.filter((tch) => list.includes(tch.name));
 };
-
-// const tempImageLink = "https://placeholderjs.com/200x200";
 
 const projects: projectType[] = [
   {
@@ -28,9 +23,9 @@ const projects: projectType[] = [
     how to read through playing interactive Filipino stories,
     with which we won the 2024 STTP Region 10— a startup competition
     hosted by DOST for College students in the region.`,
-    langs: techFilterer(langs, ["TypeScript"]),
-    fwrks: techFilterer(frameworks, ["React", "Ionic"]),
-    tools: techFilterer(tools, ["Figma", "Tailwind"]),
+    Languages: techFilterer(langs, ["TypeScript"]),
+    Frameworks: techFilterer(frameworks, ["React", "Ionic"]),
+    Tools: techFilterer(tools, ["Figma", "Tailwind"]),
     image: {
       link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239424/andana_um7mdb.png",
       alt: "Andana preview",
@@ -42,8 +37,8 @@ const projects: projectType[] = [
     desc: `For our thesis, I led the team in designing the
     Data Mart Schema and developing the ETL using Kimball's
     method.`,
-    langs: techFilterer(langs, ["Groovy"]),
-    tools: techFilterer(tools, [
+    Languages: techFilterer(langs, ["Groovy"]),
+    Tools: techFilterer(tools, [
       "PostgreSQL",
       "Apache NiFi",
       "DBeaver",
@@ -61,9 +56,9 @@ const projects: projectType[] = [
     led the team to make the initial web application— which
     digitizes a client scheduling an appointment with an
     attorney. Focused more on the Database and the Backend.`,
-    langs: techFilterer(langs, ["Python"]),
-    fwrks: techFilterer(frameworks, ["Flask"]),
-    tools: techFilterer(tools, [
+    Languages: techFilterer(langs, ["Python"]),
+    Frameworks: techFilterer(frameworks, ["Flask"]),
+    Tools: techFilterer(tools, [
       "MySQL",
       "Tailwind",
       "Jira",
@@ -79,9 +74,9 @@ const projects: projectType[] = [
     name: "Planning Digitization (LGU GenSan)",
     desc: `Digitize the process of creating AIP/PPA’s for the
     City of General Santos LGU by developing a web application.`,
-    langs: techFilterer(langs, ["PHP", "Javascript"]),
-    fwrks: techFilterer(frameworks, ["Laravel", "Alpine"]),
-    tools: techFilterer(tools, ["MySQL", "Tailwind", "DBeaver", "Docker"]),
+    Languages: techFilterer(langs, ["PHP", "Javascript"]),
+    Frameworks: techFilterer(frameworks, ["Laravel", "Alpine"]),
+    Tools: techFilterer(tools, ["MySQL", "Tailwind", "DBeaver", "Docker"]),
     image: {
       link: "https://res.cloudinary.com/djqoxxzdo/image/upload/v1762239423/aip-ppa_pvxv9y.png",
       alt: "Planning Digitization landing page",
@@ -94,10 +89,6 @@ export default defineComponent({
     return {
       hoveredIdx: [] as string[],
       iconColor,
-      // eslint-disable-next-line @typescript-eslint/array-type
-      projecttype_skill_keys: ["langs", "fwrks", "tools"] as Array<
-        keyof Pick<projectType, "langs" | "fwrks" | "tools">
-      >,
     };
   },
   computed: {
@@ -113,6 +104,9 @@ export default defineComponent({
         else return SkillCategory.Tools;
       };
     },
+    projecttype_skill_keys(): SkillCategory[] {
+      return Object.values(SkillCategory);
+    }
   },
   methods: {
     ifHovered(
@@ -173,9 +167,9 @@ export default defineComponent({
               @touchstart="addToHover(colIdx, projIdx, category, techIdx)"
             >
               <Skill
-                :name="enum_of(category)"
+                :name="category"
                 :skill="tech"
-                :color-choice="iconColor(enum_of(category))"
+                :color-choice="iconColor(category)"
               />
             </span>
           </template>
