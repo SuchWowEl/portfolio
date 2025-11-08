@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { SiArchlinux, SiNeovim } from "vue-icons-plus/si";
 
-const email = ref("elizer.dolorosa7@gmail.com");
+const email = "elizer.dolorosa7@gmail.com";
+
 const sectionsVisible = ref<boolean>(false);
 const observer = ref<IntersectionObserver | null>(null);
 const hobbiesSection = useTemplateRef<HTMLUListElement>("hobbiesSection");
@@ -37,6 +38,7 @@ const copyEmail = async () => {
   console.log(message);
   useNuxtApp().$toast.info(message, { autoClose: 1500 });
 };
+
 </script>
 
 <template>
@@ -48,21 +50,12 @@ const copyEmail = async () => {
         <img
           src="https://res.cloudinary.com/djqoxxzdo/image/upload/v1762536434/candidate_2_xq16to.jpg"
           alt="Profile Image"
-          class="rounded-full md:h-[300px] h-[200px] md:w-[300px] w-[200px]"
+          class="rounded-full md:h-[300px] h-[200px] md:w-[300px] w-[200px] flex items-center text-center"
         >
       </div>
       <div class="lg:w-2/3 lg:px-32 text-center lg:text-left">
-        <Greetings />
+        <Greetings :go-to-projects="goToProjects" />
       </div>
-    </div>
-
-    <div class="text-center">
-      <button
-        class="mt-6 px-6 py-2 bg-rv-cyan text-rv-bg font-semibold rounded hover:shadow-md hover:shadow-rv-cyan hover:transition-all hover:cursor-pointer"
-        @click="goToProjects"
-      >
-        View My Work
-      </button>
     </div>
 
     <div
