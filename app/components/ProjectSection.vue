@@ -104,7 +104,7 @@ export default defineComponent({
         else return SkillCategory.Tools;
       };
     },
-    projecttype_skill_keys(): SkillCategory[] {
+    skills(): SkillCategory[] {
       return Object.values(SkillCategory);
     }
   },
@@ -126,10 +126,7 @@ export default defineComponent({
       category: string,
       techIdx: number
     ): void {
-      this.hoveredIdx = [
-        ...this.hoveredIdx,
-        `${colIdx}-${projIdx}-${category}-${techIdx}`,
-      ];
+      this.hoveredIdx.push(`${colIdx}-${projIdx}-${category}-${techIdx}`);
     },
   },
 });
@@ -153,7 +150,7 @@ export default defineComponent({
         <div
           class="self-end justify-end-safe text-end max-w-full flex items-center flex-wrap p-3 sm:p-4 gap-x-2 gap-y-2 sm:gap-x-4 sm:gap-y-4 content-end"
         >
-          <template v-for="category in projecttype_skill_keys">
+          <template v-for="category in skills">
             <span
               v-for="(tech, techIdx) in proj[category]"
               :key="tech.name + techIdx"

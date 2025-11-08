@@ -40,5 +40,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <a ref="shinyRef" class="custom-shiny inline-block">{{ opts[tool].emoji }}</a>
+  <span ref="shinyRef" class="custom-shiny inline-block">{{ opts[tool].emoji }}</span>
 </template>
