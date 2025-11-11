@@ -1,0 +1,3 @@
+User-Agent: *
+Disallow: /about
+Disallow: /projects
