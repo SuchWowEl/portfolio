@@ -44,7 +44,7 @@ const copyEmail = async () => {
 <template>
   <div>
     <div
-      class="flex lg:flex-row flex-col flex-wrap justify-around items-center w-2/3 lg:w-full mx-auto"
+      class="flex lg:flex-row flex-col flex-wrap justify-around items-center w-full px-6 mx-auto"
     >
       <div class="flex flex-col items-end lg:w-1/3">
         <img
@@ -53,7 +53,7 @@ const copyEmail = async () => {
           class="rounded-full md:h-[300px] h-[200px] md:w-[300px] w-[200px] flex items-center text-center"
         >
       </div>
-      <div class="lg:w-2/3 lg:px-32 text-center lg:text-left">
+      <div class="w-full lg:w-2/3 lg:px-32 text-center lg:text-left">
         <Greetings :go-to-projects="goToProjects" />
       </div>
     </div>
